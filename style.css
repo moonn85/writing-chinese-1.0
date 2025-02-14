@@ -239,3 +239,17 @@ footer {
   display: block;
   cursor: pointer;
 }
+@media (max-width: 768px) {
+  .lesson-list {
+    float: none;
+    width: 100%;
+    max-width: none;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+  .practice-area {
+    float: none;
+    width: 100%;
+    max-width: none;
+  }
+}

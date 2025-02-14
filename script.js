@@ -143,6 +143,30 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   drawCanvas.addEventListener("mouseup", () => drawing = false);
   drawCanvas.addEventListener("mouseleave", () => drawing = false);
+  drawCanvas.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    drawing = true;
+    const touch = e.touches[0];
+    let rect = drawCanvas.getBoundingClientRect();
+    ctx.beginPath();
+    ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
+  }, {passive: false});
+  drawCanvas.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    if (!drawing) return;
+    const touch = e.touches[0];
+    let rect = drawCanvas.getBoundingClientRect();
+    ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
+    ctx.strokeStyle = "#000";
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round";
+    ctx.stroke();
+  }, {passive: false});
+  drawCanvas.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    drawing = false;
+  }, {passive: false});
+
   
  // --- CHỨC NĂNG CHẤM ĐIỂM VÀ LƯU LỊCH SỬ ---
 // Hàm gọi Cloud Function để lấy đánh giá từ OpenAI
