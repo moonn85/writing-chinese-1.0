@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --bg-color: #f5f7fa;
+  --text-color: #333;
+  --btn-bg-color: #3498db;
+  --btn-hover-color: #2980b9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+header {
+  background: var(--primary-color);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1em;
+}
+
+/* Main layout */
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Aside - Danh sách cấp HSK và bài học */
+.lesson-list {
+  flex: 1 1 250px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.lesson-list h2 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+/* Danh sách cấp HSK */
+#hskLevelList,
+#lessonList {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.level-item,
+.lesson-item {
+  padding: 10px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.level-item:hover,
+.level-item.active,
+.lesson-item:hover,
+.lesson-item.active {
+  background: var(--btn-hover-color);
+  color: #fff;
+}
+
+/* Khu vực luyện tập */
+.practice-area {
+  flex: 2 1 600px;
+  padding: 20px;
+}
+
+/* Mẫu chữ hướng dẫn */
+.sample-guide {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sample-character {
+  font-size: 6em;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.sample-info p {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+/* Canvas luyện viết */
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+canvas {
+  border: 2px solid var(--primary-color);
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* Nút chức năng */
+.controls {
+  text-align: center;
+}
+
+.controls button {
+  background: var(--btn-bg-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.controls button:hover {
+  background: var(--btn-hover-color);
+}
+
+/* Footer */
+footer {
+  background: #f1f1f1;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+#lessonList {
+  max-height: 300px; /* Điều chỉnh chiều cao sao cho hiển thị khoảng 10 mục */
+  overflow-y: auto;  /* Hiển thị thanh cuộn dọc khi có nhiều mục */
+  padding-right: 5px; /* Tạo không gian cho thanh cuộn nếu cần */
+}
+/* Modal lịch sử */
+.modal {
+  display: none; /* Ẩn mặc định */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 5px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Điều khiển bật/tắt hướng dẫn */
+.toggle-guide {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+/* Canvas container (2 canvas chồng lên nhau) */
+.canvas-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto 20px auto;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+}
+
+/* Hai canvas bên trong */
+.canvas-container canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Canvas hướng dẫn: hiển thị nét chữ mờ */
+#guideCanvas {
+  pointer-events: none; /* Cho phép thao tác trên canvas vẽ phía trên */
+  opacity: 0.5; /* Điều chỉnh độ mờ, tăng nếu cần */
+}
+
+#pronounceBtn {
+  margin: 10px auto;
+  padding: 5px 10px;
+  font-size: 1em;
+  display: block;
+  cursor: pointer;
+}

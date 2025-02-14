@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luyện Viết Tiếng Trung - Bài Học</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Thư viện Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  
+  <!-- Cấu hình Firebase của bạn (thay thế các giá trị mẫu bằng thông tin dự án của bạn) -->
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyAuB8F6XIsRpPzdzFMsdy3nYq5ainMKrhg",
+  authDomain: "writing-chinese-406cd.firebaseapp.com",
+  databaseURL: "https://writing-chinese-406cd-default-rtdb.firebaseio.com",
+  projectId: "writing-chinese-406cd",
+  storageBucket: "writing-chinese-406cd.firebasestorage.app",
+  messagingSenderId: "141514806465",
+  appId: "1:141514806465:web:6f3c7ad285aefc3ee8f040",
+  measurementId: "G-PPR4DK35TR"
+    };
+    // Khởi tạo Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Luyện Viết Tiếng Trung</h1>
+      <p>Chọn bài học bên trái để luyện viết theo mẫu chữ.</p>
+    </header>
+    <main>
+      <aside class="lesson-list">
+        <h2>Chọn HSK</h2>
+        <ul id="hskLevelList">
+          <li class="level-item" data-level="hsk1">HSK 1</li>
+          <li class="level-item" data-level="hsk2">HSK 2</li>
+          <li class="level-item" data-level="hsk3">HSK 3</li>
+          <li class="level-item" data-level="hsk4">HSK 4</li>
+          <li class="level-item" data-level="hsk5">HSK 5</li>
+          <li class="level-item" data-level="hsk6">HSK 6</li>
+        </ul>
+        <h2>Danh sách bài học</h2>
+        <ul id="lessonList"></ul>
+      </aside>
+      <section class="practice-area">
+        <div class="sample-guide">
+          <div class="sample-character" id="sampleCharacter">Chọn bài học</div>
+          <button id="pronounceBtn">Phát âm</button>
+          <div class="sample-info">
+            <p id="samplePinyin">Phiên âm: </p>
+            <p id="sampleTranslation">Dịch: </p>
+          </div>
+        </div>
+        <!-- Điều khiển bật/tắt hướng dẫn nét chữ -->
+        <div class="toggle-guide">
+          <input type="checkbox" id="guideToggle">
+          <label for="guideToggle">Bật hướng dẫn nét chữ</label>
+        </div>
+        <!-- Canvas container chứa 2 canvas chồng lên nhau -->
+        <div class="canvas-container">
+          <canvas id="guideCanvas" width="500" height="500"></canvas>
+          <canvas id="drawCanvas" width="500" height="500"></canvas>
+        </div>
+        <div class="controls">
+          <button id="clearBtn">Xóa</button>
+          <button id="checkBtn">Kiểm Tra Nét</button>
+          <button id="saveBtn">Lưu bài</button>
+          <button id="historyBtn">Lịch sử</button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 - Dự án luyện viết tiếng Trung</p>
+    </footer>
+    <!-- Modal lịch sử -->
+    <div id="historyModal" class="modal">
+      <div class="modal-content">
+        <span id="closeHistory" class="close">&times;</span>
+        <h2>Lịch sử làm bài</h2>
+        <ul id="historyList"></ul>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </div>
+</body>
+</html>
